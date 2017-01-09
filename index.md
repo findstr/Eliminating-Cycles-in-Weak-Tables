@@ -3,7 +3,7 @@
 ------
 
 - 作者：Alexandra Barros, Roberto Ierusalimschy
-- 译者：[重归混沌](http://blog.gotociding.com)
+- 译者：[重归混沌](http://blog.gotocoding.com)
 
 ##摘要：
 
