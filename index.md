@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+# 使用弱表避免循环引用（Eliminating Cycles in Weak Tables）
 
-You can use the [editor on GitHub](https://github.com/findstr/ry08-06/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+------
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- 作者：Alexandra Barros, Roberto Ierusalimschy
+- 译者：[重归混沌](http://blog.gotociding.com)
 
-### Markdown
+##摘要：
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+*弱引用* 为与垃圾回收器交互提供了一种优雅的机制。*弱引用* 的大多数典型应用都是通过*弱表*来实现的（例如:Java中的WeakHasMap）。 然而大多数*弱表*都有一个很苛刻的限制：只要*弱表*中key和valu相互循环引用，那么即使已经没有外部数据对他们进行引用，这些数据也不会被垃圾因收器回收。这将会为某些类型的应用程序使用弱表带来困难。
 
-```markdown
-Syntax highlighted code block
+在本文中，我们呈现了在lua编程语言中，是如何克服这个困难的。我们的方法包含了一个对表的ephemerons机制的变种。为了提供这种机制，我们修改了lua虚拟机的垃圾回收器。带着这个修改后的垃圾回收器，我们可以来这个解决弱表中的循环引用是实现是否高效和可用。
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/findstr/ry08-06/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+###关键字:垃圾回惧，弱表，弱引用
+###分类： D.3.3
